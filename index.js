@@ -24,9 +24,11 @@ app.post('/notes', (req ,res) => {
 
 
 app.get('/notes', (req ,res) => {
-  res.status(201).json({
-    mesaage: "note created successfully"
+  res.status(200).json({
+    mesaage: "note fetch  successfully",
+    notes: notes
   })
+  console.log(notes)
 })
 
 
