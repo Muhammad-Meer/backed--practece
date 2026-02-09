@@ -31,14 +31,15 @@ app.get('/notes', (req ,res) => {
   console.log(notes)
 })
 
-app.delete('/notes/:index',(req , res) => {
+app.delete('/notes/:index', (req , res) => {
    const id = req.params.index
    delete notes[id]
-   res.status(200).json({
-    
-   })
-})
 
+   res.status(200).json({
+    delete: "delete ho choka ha"
+   })
+   
+})
 
 app.listen(3200, () => {
   console.log("http://localhost:3200");
