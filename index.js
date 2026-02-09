@@ -15,18 +15,32 @@ app.get('/', (req, res) => {
 
 let notes = []
 
-app.post('/notes', (req ,res) => {
+// app.post('/notes', (req ,res) => {
+//   notes.push(req.body)
+//   res.status(201).json({
+//     mesaage: "note created successfully"
+//   })
+// })
+
+
+app.post('/notes', (req , res) => {
   notes.push(req.body)
-  res.status(201).json({
-    mesaage: "note created successfully"
+  res.status(200).json({
+    message: "kaam kergya"
   })
 })
 
 
-app.get('/notes', (req ,res) => {
+// app.get('/notes', (req ,res) => {
+//   res.status(200).json({
+//     mesaage: "note fetch  successfully",
+//     notes: notes
+//   })
+//   console.log(notes)
+// })
+app.get('/notes', (req , res) => {
   res.status(200).json({
-    mesaage: "note fetch  successfully",
-    notes: notes
+    mesaage: "kaam hogya notes ki get api chal gai"
   })
   console.log(notes)
 })
