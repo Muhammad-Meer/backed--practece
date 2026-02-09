@@ -2,9 +2,9 @@ const express = require('express');
 const app = express();
 
 
-
 app.use(express.json())
 
+let notes = []
 
 
 app.get('/', (req, res) => {
@@ -12,38 +12,23 @@ app.get('/', (req, res) => {
 });
 
 
-
-let notes = []
-
-// app.post('/notes', (req ,res) => {
-//   notes.push(req.body)
-//   res.status(201).json({
-//     mesaage: "note created successfully"
-//   })
-// })
-
-
-app.post('/notes', (req , res) => {
+app.post('/notes', (req ,res) => {
   notes.push(req.body)
-  res.status(200).json({
-    message: "kaam kergya"
-  })
-})
-
-
-// app.get('/notes', (req ,res) => {
-//   res.status(200).json({
-//     mesaage: "note fetch  successfully",
-//     notes: notes
-//   })
-//   console.log(notes)
-// })
-app.get('/notes', (req , res) => {
-  res.status(200).json({
-    mesaage: "kaam hogya notes ki get api chal gai"
+  res.status(201).json({
+    mesaage: "note created successfully"
   })
   console.log(notes)
 })
+
+
+app.get('/notes', (req ,res) => {
+  res.status(200).json({
+    mesaage: "note fetch  successfully",
+    notes: notes
+  })
+  console.log(notes)
+})
+
 
 app.delete('/notes/:index', (req , res) => {
    const id = req.params.index
