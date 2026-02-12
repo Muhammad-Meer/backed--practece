@@ -61,17 +61,18 @@ app.delete('/:id', async (req, res) => {
 app.put('/:id', async (req, res) => {
   const id = req.params.id;
   const data = req.body;
-  try {
-    const updatedNote = await notemodel.findByIdAndUpdate(id, data, { new: true });
-    res.status(200).json({
-      message: "note updated successfully",
-      note: updatedNote
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: "something went wrong"
-    });
-  }
+ const description = data.description;
+
+ try {
+  await notemodel.findOneAndUpdate({ _id: id}, { description: description})
+  res.status(200).json({
+    message: "note updated successfully"
+  })
+ } catch (error) {
+  res.status(500).json({
+    message: "something went wrong"
+  })
+ }
 });
 
 
