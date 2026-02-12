@@ -29,7 +29,12 @@ app.post('/', async (req, res) => {
 
 app.get('/', async (req, res) => {
   try {
-   
+   const notes = await notemodel.find();
+
+   res.status(200).json({
+    message: "get all notes",
+    notes: notes
+   })
   } catch (error) {
     
   }
