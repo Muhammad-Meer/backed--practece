@@ -25,4 +25,15 @@ app.post('/', async (req, res) => {
   }
 });
 
+
+
+app.get('/', async (req, res) => {
+  try {
+   
+  } catch (error) {
+    
+  }
+})
+
+
 module.exports = app;
