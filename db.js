@@ -1,12 +1,9 @@
-const { default: mongoose } = require('mongoose')
-const db = require('mongoose')
+const mongoose = require('mongoose')
 
-
-
- async function conectDb() {
+async function connectDb() {
   await mongoose.connect('mongodb+srv://muhabbatali:zVqoJkgRl0U2kE9V@cluster0.fepov5t.mongodb.net/papan')
 
-  console.log('conect')
-
+  console.log('connected')
 }
-   module.exports = conectDb
+
+module.exports = connectDb
