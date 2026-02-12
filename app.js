@@ -36,7 +36,10 @@ app.get('/', async (req, res) => {
     notes: notes
    })
   } catch (error) {
-    
+    console.log(error);
+    res.status(500).json({
+      message: "something went wrong"
+    })
   }
 })
 
