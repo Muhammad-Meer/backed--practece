@@ -55,8 +55,24 @@ app.delete('/:id', async (req, res) => {
         message: "something went wrong"
       })
     }
-  
+
 })
+
+app.put('/:id', async (req, res) => {
+  const id = req.params.id;
+  const data = req.body;
+  try {
+    const updatedNote = await notemodel.findByIdAndUpdate(id, data, { new: true });
+    res.status(200).json({
+      message: "note updated successfully",
+      note: updatedNote
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "something went wrong"
+    });
+  }
+});
 
 
 module.exports = app;
