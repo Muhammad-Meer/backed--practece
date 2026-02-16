@@ -1,79 +1,20 @@
-const express = require("express");
-const notemodel = require("./notemodel");
+const express = require('express');
 
-const app = express();
-
+const app = express()
 app.use(express.json());
 
-app.post('/', async (req, res) => {
-  try {
-    const data = req.body;
-
-    await notemodel.create({
-      title: data.title,
-      description: data.description
-    });
-
-    res.status(201).json({
-      message: "note created successfully"
-    });
-
-  } catch (error) {
-    res.status(500).json({
-      message: "Something went wrong"
-    });
-  }
-});
 
 
 
-app.get('/', async (req, res) => {
-  try {
-   const notes = await notemodel.find();
-
-   res.status(200).json({
-    message: "get all notes",
-    notes: notes
-   })
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      message: "something went wrong"
-    })
-  }
+app.get('/', (req , res) => {
+  res.send("Notes API Running...")
 })
 
-app.delete('/:id', async (req, res) => {
-    try {
-      const id = req.params.id;
-      await notemodel.findOneAndDelete({_id: id});
-      res.status(200).json({
-        message: "note deleted successfully"
-      })
-    } catch (error) {
-      res.status(500).json({
-        message: "something went wrong"
-      })
-    }
 
+const port = 3200;
+
+app.listen(port , () => {
+  console.log("http://localhost:" + port)
 })
-
-app.put('/:id', async (req, res) => {
-  const id = req.params.id;
-  const data = req.body;
- const description = data.description;
-
- try {
-  await notemodel.findOneAndUpdate({ _id: id}, { description: description})
-  res.status(200).json({
-    message: "note updated successfully"
-  })
- } catch (error) {
-  res.status(500).json({
-    message: "something went wrong"
-  })
- }
-});
-
 
 module.exports = app;
