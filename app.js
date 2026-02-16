@@ -1,20 +1,17 @@
 const express = require('express');
-
-const app = express()
-app.use(express.json());
-
+const app = express();
 
 
 
 app.get('/', (req , res) => {
-  res.send("Notes API Running...")
+  res.send('module.exports = app;')
+
+
+  const port = 3200
+
+  
+  app.listen(port , () => {
+    console.log("http://localhost:" + port)
+
+  })
 })
-
-
-const port = 3200;
-
-app.listen(port , () => {
-  console.log("http://localhost:" + port)
-})
-
-module.exports = app;
