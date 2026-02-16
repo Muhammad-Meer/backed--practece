@@ -1,12 +1,11 @@
-const express = require('express');
-
+const express= require('express');
 const app = express();
 
-// middleware
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send("Notes API Running...");
-});
+
+app.get('/', (req , res) => {
+  res.send('api is working')
+})
 
 module.exports = app;
