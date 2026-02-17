@@ -5,8 +5,15 @@ const app = express();
 app.use(express.json());
 
 
-app.get('/', (req , res) => {
-  res.send('api is working')
-})
+app.post('/post', async (req , res) => {
+  try {
+    const {title, description} = req.body;
+    
+    const notecreate = await no
+    
+  } catch (error) {
+    
+  }
+});
 
 module.exports = app;
