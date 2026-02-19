@@ -1,4 +1,5 @@
-const usermodel = require('../usermodel')
+const usermodel = require('../usermodel');
+const jwt = require('jsonwebtoken');
 
 
 async function register(req, res) {
