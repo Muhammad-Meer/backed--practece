@@ -1,10 +1,12 @@
 const express = require('express');
+const  registercontrooler = require('../Controller/AuthControoler')
+
+
+
 const router = express.Router();
-// const  registercontrooler = require('../Controller/AuthControoler')
 
 
-
-router.post('/register', registercontrooler.register)
+router.post('/register', registercontrooler.registeruser)
 
 
 
