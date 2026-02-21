@@ -1,9 +1,16 @@
-const express = require('express') 
-const AuthRouter = require('./routes/AuthRoutes')
+// const express = require("express")
+// const connectDb = require("./db");
 
+// const app = express();
+// const port = 3000;
 
-const app = express()
-// app.use(express.json())
-// app.use('/api/auth', AuthRouter)
+// // Define a route for GET requests to the root URL (/)
+// app.get('/', (req, res) => {
+//   res.send('Hello World!');
+// });
 
-module.exports = app
+// // Start the server and listen on the specified port
+// app.listen(port, () => {
+//   connectDb()
+//   console.log(`Server listening at http://localhost:${port}`);
+// });
