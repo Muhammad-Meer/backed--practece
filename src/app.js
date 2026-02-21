@@ -4,7 +4,7 @@ const authroutes = require('./routes/Auth.Routes');
 
 const app = express();
 
-app.use('/auth', authroutes);
+app.use('/api/auth', authroutes);
 
 
 module.exports = app;
