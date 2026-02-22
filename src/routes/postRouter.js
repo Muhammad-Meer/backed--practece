@@ -1,11 +1,16 @@
-const express = require('express');
+// const express = require('express');
 
-const router = express.Router();
+// const router = express.Router();
 
 
-router.post('/create',(req , res ) => {
+// router.post('/create',(req , res ) => {
+//    console.log(req.body)
 
-})
+//    console.log(req.body)
+
+
+//    res.send("post created")
+// })
 
 
 module.exports = router;
