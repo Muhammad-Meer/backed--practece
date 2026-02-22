@@ -1,6 +1,6 @@
 const usermodel = require("../user.model");
 const jwt = require("jsonwebtoken");
-const cookies = require('cookie-parser');
+
 
 async function registeruser(req, res) {
   try {
@@ -17,6 +17,9 @@ const token = jwt.sign(
    process.env.jwt_secret, // 🔥 variable name match karo
    { expiresIn: '1d' }
 );
+
+
+     res.cookie("token", token)
 
     res.status(201).json({
       message: "user registered successfully",
