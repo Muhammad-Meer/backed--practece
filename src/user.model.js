@@ -12,4 +12,14 @@ const userschema = new mongoose.Schema({
    required: true,
    unique: true
   },
+  role: {
+    type: String,
+    enum: ['user', 'artist'],
+    default: 'user'
+  }
 })
+
+
+const usermodel = mongoose.model('userdeta',userschema)
+
+module.exports = usermodel;
