@@ -3,11 +3,10 @@ const app = express();
 
 const authroutes = require('./routes/Auth.Routes');
 
-
-app.use(express.json());
-
+// 👇 Yeh dono middleware lagao
+app.use(express.json()); // JSON data ke liye
+app.use(express.urlencoded({ extended: true })); // Form data ke liye
 
 app.use('/api/auth', authroutes);
-
 
 module.exports = app;
