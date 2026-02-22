@@ -1,16 +1,19 @@
-// const express = require('express');
-
-// const router = express.Router();
-
-
-// router.post('/create',(req , res ) => {
-//    console.log(req.body)
-
-//    console.log(req.body)
+const express = require("express");
+const router = express.Router();
 
 
-//    res.send("post created")
-// })
 
+router.post("/create", (req, res) => {
+
+     const token = req.cookies.token;
+
+     if(!token) {
+      res.status(401).json({
+        meassage: "unauthorized"
+      })
+     }
+
+  res.send("post created");
+});
 
 module.exports = router;
