@@ -12,8 +12,14 @@ router.post("/create", (req, res) => {
         meassage: "unauthorized"
       })
      }
-
-  res.send("post created");
+        try {
+          const decoded = jwt.verify(token, process.env.jwt_secret);
+        } catch (error) {
+          res.status(401).json({
+            meassage: "invalid token"
+          })
+        }
+        
 });
 
 module.exports = router;
