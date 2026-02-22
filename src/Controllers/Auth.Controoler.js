@@ -31,4 +31,12 @@ const token = jwt.sign(
   }
 }
 
-module.exports = { registeruser };
+async function getFunc(req , res) {
+  console.log('cookies', req.cookies);
+  res.json({
+    message: "test route",
+    cookies: req.cookies
+})
+}
+
+module.exports = { registeruser, getFunc };
