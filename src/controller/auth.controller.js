@@ -5,17 +5,21 @@ const usermodel = require('../models/user.model');
   try {
       const {username, email, role = "user"} = req.body;
       const isuseralreadyexist = await usermodel.findOne({
-        or: [
+        $or: [
           {username},
           {email}
         ]
       })
 
       if(isuseralreadyexist){
-        return res.status(400).json({
-          message: "User already exist"
-        })
+        return res.status(400).json({message: "User already exist"})
       }
+
+      const user = await usermodel.create({
+        username,
+        email,
+        role,
+      })
 
   } catch (error) {
     console.log(error);
