@@ -1,4 +1,4 @@
-const { JsonWebTokenError } = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 const usermodel = require("../models/user.model");
 
 const userregister = async (req, res) => {
@@ -19,15 +19,13 @@ const userregister = async (req, res) => {
       role,
     });
 
-    const createtoken = Jwt.sign(
+    const createtoken = jwt.sign(
       {
         id: newuser._id,
         role: newuser.role,
       },
-      process.env.jwt_secret,
+      process.env.JWT_SECRET
     );
-
-    
 
     res.cookie("token", createtoken);
 
@@ -36,9 +34,36 @@ const userregister = async (req, res) => {
       user: newuser,
     });
 
-
-
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+
+
+const loginFunction = async (req, res) => {
+     
+     try {
+
+      const { username, email} = req.body;
+
+      const user = await usermodel.findOne({
+        $or: [
+          { username },
+          { email }
+        ]})
+
+        if(!user) {
+          return res.status(400).json({ message: "user not found" });
+        }
+
+     } catch (error) {
+      res.status(500).json({ message: error.message });
+      
+     }
+      
+
+
+
+}
+
+module.exports = { userregister, loginFunction };
