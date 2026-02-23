@@ -21,6 +21,15 @@ const usermodel = require('../models/user.model');
         role,
       })
 
+      const token = jwt.sign({
+      id: user._id,
+      role: user.role
+      }, process.env.jwt_secret);
+
+      res.cookie("token", token)
+
+
+
   } catch (error) {
     console.log(error);
     return res.status(500).json({
