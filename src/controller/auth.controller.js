@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const usermodel = require("../models/user.model");
+const bcrypt = require("bcrypt");
 
 const userregister = async (req, res) => {
   try {
@@ -45,7 +46,7 @@ const loginFunction = async (req, res) => {
      
      try {
 
-      const { username, email} = req.body;
+      const { username, email, password} = req.body;
 
       const user = await usermodel.findOne({
         $or: [
@@ -57,7 +58,7 @@ const loginFunction = async (req, res) => {
           return res.status(400).json({ message: "user not found" });
         }
 
-        const ispasswordmatch  = await bcrtpt.compare(password, user.password)
+        const ispasswordmatch  = await bcrypt.compare(password, user.password)
         if(!ispasswordmatch) {
           return res.status(400).json({ message: "password does not match" });
         }
@@ -78,9 +79,6 @@ const loginFunction = async (req, res) => {
      } catch (error) {
       res.status(500).json({ message: error.message });
      }
-
-      
-
 
 
 }
