@@ -1,6 +1,7 @@
 const express = require('express');
 const cookies = require('cookie-parser');
-const authroure = require('./routes/auth.roure');
+const authroure = require('./routes/auth.route');
+const musicrouter = require('./routes/music.routes')
 
 
 
